@@ -33,6 +33,7 @@ public class MenuPuzzles extends javax.swing.JFrame {
         }
         jLabel2.setIcon(imagen[0]);
         iActual=0;
+        System.out.println("hola mundo");
     }
     
     

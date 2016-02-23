@@ -2,6 +2,7 @@
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,5 +20,5 @@ public class Servidor {
     int puerto = 8080;
     int numeroConexiones=2;
     DataOutputStream salida;
-
+    
 }
