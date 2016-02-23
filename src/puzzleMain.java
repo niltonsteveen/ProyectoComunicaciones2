@@ -28,6 +28,7 @@ public class puzzleMain extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         jMenuItem3.setEnabled(false);
+        JOptionPane.showMessageDialog(null, "hola mundo");
     }
 
     /**
