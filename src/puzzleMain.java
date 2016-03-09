@@ -1,5 +1,8 @@
 
 import java.awt.Dimension;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.Socket;
 import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -14,21 +17,35 @@ import javax.swing.JOptionPane;
  *
  * @author nilton
  */
-public class puzzleMain extends javax.swing.JFrame {
+public class puzzleMain extends javax.swing.JFrame implements Runnable {
     MenuPuzzles mP;
     ImageIcon iSKT1;
     ImageIcon [] original;
     ImageIcon []actual=new ImageIcon[16];
+    int contador;
+    private Socket cliente;
+    private DataOutputStream out;
+    private DataInputStream in;
+    private int puerto = 2027;
+    private String host = "localhost";
+    private boolean estado;
     /**
      * Creates new form puzzleMain
      */
     public puzzleMain() {
-        initComponents();
-        this.setMinimumSize(new Dimension(500, 521));
-        setLocationRelativeTo(null);
-        setResizable(false);
-        jMenuItem3.setEnabled(false);
-        JOptionPane.showMessageDialog(null, "hola mundo");
+        try{
+            initComponents();
+            this.setMinimumSize(new Dimension(500, 521));
+            setLocationRelativeTo(null);
+            setResizable(false);
+            jMenuItem3.setEnabled(false);
+            JOptionPane.showMessageDialog(null, "hola mundo");
+            cliente=new Socket(host,puerto);
+            in = new DataInputStream(cliente.getInputStream());
+            out = new DataOutputStream(cliente.getOutputStream());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -57,6 +74,8 @@ public class puzzleMain extends javax.swing.JFrame {
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -66,7 +85,6 @@ public class puzzleMain extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout(4, 4));
 
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +92,6 @@ public class puzzleMain extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
 
         jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +99,6 @@ public class puzzleMain extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
 
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +106,6 @@ public class puzzleMain extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
 
         jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +113,6 @@ public class puzzleMain extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4);
 
         jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +120,6 @@ public class puzzleMain extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5);
 
         jButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +127,6 @@ public class puzzleMain extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6);
 
         jButton7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +134,6 @@ public class puzzleMain extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7);
 
         jButton8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +141,6 @@ public class puzzleMain extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8);
 
         jButton9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +148,6 @@ public class puzzleMain extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton9);
 
         jButton10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +155,6 @@ public class puzzleMain extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton10);
 
         jButton11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton11.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +162,6 @@ public class puzzleMain extends javax.swing.JFrame {
                 jButton11ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton11);
 
         jButton12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton12.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +169,6 @@ public class puzzleMain extends javax.swing.JFrame {
                 jButton12ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton12);
 
         jButton13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton13.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +176,6 @@ public class puzzleMain extends javax.swing.JFrame {
                 jButton13ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton13);
 
         jButton14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton14.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +183,6 @@ public class puzzleMain extends javax.swing.JFrame {
                 jButton14ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton14);
 
         jButton15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton15.addActionListener(new java.awt.event.ActionListener() {
@@ -186,7 +190,6 @@ public class puzzleMain extends javax.swing.JFrame {
                 jButton15ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton15);
 
         jButton16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButton16.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +197,10 @@ public class puzzleMain extends javax.swing.JFrame {
                 jButton16ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton16);
+
+        jButton17.setText("jButton17");
+
+        jButton18.setText("jButton18");
 
         jMenu1.setText("Opciones");
 
@@ -221,6 +227,84 @@ public class puzzleMain extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton17)
+                            .addComponent(jButton18))))
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton17)
+                        .addGap(87, 87, 87)
+                        .addComponent(jButton18)))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -246,8 +330,9 @@ public class puzzleMain extends javax.swing.JFrame {
     }
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
+        contador=0;
         original=mP.campeonSeleccionado();
-        iSKT1=original[15];
+        iSKT1=original[15]; 
         int numeroRandom;
         Vector guardaPos=new Vector();
         while(guardaPos.size()<16){
@@ -260,6 +345,23 @@ public class puzzleMain extends javax.swing.JFrame {
             }
         }
         
+        jButton1.setIcon(original[0]);
+        jButton2.setIcon(original[1]);
+        jButton3.setIcon(original[2]);
+        jButton4.setIcon(original[3]);
+        jButton5.setIcon(original[4]);
+        jButton6.setIcon(original[5]);
+        jButton7.setIcon(original[6]);
+        jButton8.setIcon(original[7]);
+        jButton9.setIcon(original[8]);
+        jButton10.setIcon(original[9]);
+        jButton11.setIcon(original[10]);
+        jButton12.setIcon(original[11]);
+        jButton13.setIcon(original[12]);
+        jButton14.setIcon(original[13]);
+        jButton15.setIcon(original[14]);
+        jButton16.setIcon(original[15]);
+        /*
         jButton1.setIcon(original[(int)guardaPos.get(0)]);
         jButton2.setIcon(original[(int)guardaPos.get(1)]);
         jButton3.setIcon(original[(int)guardaPos.get(2)]);
@@ -276,7 +378,8 @@ public class puzzleMain extends javax.swing.JFrame {
         jButton14.setIcon(original[(int)guardaPos.get(13)]);
         jButton15.setIcon(original[(int)guardaPos.get(14)]);
         jButton16.setIcon(original[(int)guardaPos.get(15)]);
-        
+        this.rellenarActual();
+        jButton17.setIcon(original[15]);*/
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -284,6 +387,7 @@ public class puzzleMain extends javax.swing.JFrame {
         ImageIcon target=(ImageIcon)jButton1.getIcon();
         ImageIcon focus1=(ImageIcon)jButton2.getIcon();
         ImageIcon focus2=(ImageIcon)jButton5.getIcon();
+        contador++;
         if(focus1==iSKT1){
             jButton1.setIcon(iSKT1);
             jButton2.setIcon(target);
@@ -291,10 +395,10 @@ public class puzzleMain extends javax.swing.JFrame {
         else if(focus2==iSKT1){
            jButton1.setIcon(iSKT1);
            jButton5.setIcon(target); 
-        }
+        } 
         boolean win=this.win();
         if(win==true){
-            JOptionPane.showMessageDialog(null,"Has ganado");
+            JOptionPane.showMessageDialog(null,"Has ganado con" + contador + " movimientos");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -304,21 +408,23 @@ public class puzzleMain extends javax.swing.JFrame {
         ImageIcon focus1=(ImageIcon)jButton1.getIcon();
         ImageIcon focus2=(ImageIcon)jButton3.getIcon();
         ImageIcon focus3=(ImageIcon)jButton6.getIcon();
+        contador++;
         if(focus1==iSKT1){
             jButton2.setIcon(iSKT1);
-            jButton1.setIcon(target);
+            jButton1.setIcon(target);  
         }
         else if(focus2==iSKT1){
            jButton2.setIcon(iSKT1);
            jButton3.setIcon(target); 
         }
+        
         else if(focus3==iSKT1){
            jButton2.setIcon(iSKT1);
            jButton6.setIcon(target); 
         }
         boolean win=this.win();
         if(win==true){
-            JOptionPane.showMessageDialog(null,"Has ganado");
+            JOptionPane.showMessageDialog(null,"Has ganado con" + contador + " movimientos");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -328,6 +434,7 @@ public class puzzleMain extends javax.swing.JFrame {
         ImageIcon focus1=(ImageIcon)jButton2.getIcon();
         ImageIcon focus2=(ImageIcon)jButton4.getIcon();
         ImageIcon focus3=(ImageIcon)jButton7.getIcon();
+        contador++;
         if(focus1==iSKT1){
             jButton3.setIcon(iSKT1);
             jButton2.setIcon(target);
@@ -342,7 +449,7 @@ public class puzzleMain extends javax.swing.JFrame {
         }
         boolean win=this.win();
         if(win==true){
-            JOptionPane.showMessageDialog(null,"Has ganado");
+            JOptionPane.showMessageDialog(null,"Has ganado con" + contador + " movimientos");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -351,6 +458,7 @@ public class puzzleMain extends javax.swing.JFrame {
         ImageIcon target=(ImageIcon)jButton4.getIcon();
         ImageIcon focus1=(ImageIcon)jButton3.getIcon();
         ImageIcon focus2=(ImageIcon)jButton8.getIcon();
+        contador++;
         if(focus1==iSKT1){
             jButton4.setIcon(iSKT1);
             jButton3.setIcon(target);
@@ -361,7 +469,7 @@ public class puzzleMain extends javax.swing.JFrame {
         }
         boolean win=this.win();
         if(win==true){
-            JOptionPane.showMessageDialog(null,"Has ganado");
+            JOptionPane.showMessageDialog(null,"Has ganado con" + contador + " movimientos");
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -371,6 +479,7 @@ public class puzzleMain extends javax.swing.JFrame {
         ImageIcon focus1=(ImageIcon)jButton1.getIcon();
         ImageIcon focus2=(ImageIcon)jButton6.getIcon();
         ImageIcon focus3=(ImageIcon)jButton9.getIcon();
+        contador++;
         if(focus1==iSKT1){
             jButton5.setIcon(iSKT1);
             jButton1.setIcon(target);
@@ -382,10 +491,10 @@ public class puzzleMain extends javax.swing.JFrame {
         else if(focus3==iSKT1){
            jButton5.setIcon(iSKT1);
            jButton9.setIcon(target); 
-        }
+        }   
         boolean win=this.win();
         if(win==true){
-            JOptionPane.showMessageDialog(null,"Has ganado");
+            JOptionPane.showMessageDialog(null,"Has ganado con" + contador + " movimientos");
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -396,6 +505,7 @@ public class puzzleMain extends javax.swing.JFrame {
         ImageIcon focus2=(ImageIcon)jButton5.getIcon();
         ImageIcon focus3=(ImageIcon)jButton7.getIcon();
         ImageIcon focus4=(ImageIcon)jButton10.getIcon();
+        contador++;
         if(focus1==iSKT1){
             jButton6.setIcon(iSKT1);
             jButton2.setIcon(target);
@@ -413,7 +523,7 @@ public class puzzleMain extends javax.swing.JFrame {
         }
        boolean win=this.win();
         if(win==true){
-            JOptionPane.showMessageDialog(null,"Has ganado");
+            JOptionPane.showMessageDialog(null,"Has ganado con" + contador + " movimientos");
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -424,6 +534,7 @@ public class puzzleMain extends javax.swing.JFrame {
         ImageIcon focus2=(ImageIcon)jButton6.getIcon();
         ImageIcon focus3=(ImageIcon)jButton8.getIcon();
         ImageIcon focus4=(ImageIcon)jButton11.getIcon();
+        contador++;
         if(focus1==iSKT1){
             jButton7.setIcon(iSKT1);
             jButton3.setIcon(target);
@@ -441,7 +552,7 @@ public class puzzleMain extends javax.swing.JFrame {
         }
         boolean win=this.win();
         if(win==true){
-            JOptionPane.showMessageDialog(null,"Has ganado");
+            JOptionPane.showMessageDialog(null,"Has ganado con" + contador + " movimientos");
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -451,6 +562,7 @@ public class puzzleMain extends javax.swing.JFrame {
         ImageIcon focus1=(ImageIcon)jButton4.getIcon();
         ImageIcon focus2=(ImageIcon)jButton7.getIcon();
         ImageIcon focus3=(ImageIcon)jButton12.getIcon();
+        contador++;
         if(focus1==iSKT1){
             jButton8.setIcon(iSKT1);
             jButton4.setIcon(target);
@@ -465,7 +577,7 @@ public class puzzleMain extends javax.swing.JFrame {
         }
         boolean win=this.win();
         if(win==true){
-            JOptionPane.showMessageDialog(null,"Has ganado");
+            JOptionPane.showMessageDialog(null,"Has ganado con" + contador + " movimientos");
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -475,6 +587,7 @@ public class puzzleMain extends javax.swing.JFrame {
         ImageIcon focus1=(ImageIcon)jButton5.getIcon();
         ImageIcon focus2=(ImageIcon)jButton10.getIcon();
         ImageIcon focus3=(ImageIcon)jButton13.getIcon();
+        contador++;
         if(focus1==iSKT1){
             jButton9.setIcon(iSKT1);
             jButton5.setIcon(target);
@@ -489,7 +602,7 @@ public class puzzleMain extends javax.swing.JFrame {
         }
         boolean win=this.win();
         if(win==true){
-            JOptionPane.showMessageDialog(null,"Has ganado");
+            JOptionPane.showMessageDialog(null,"Has ganado con" + contador + " movimientos");
         }
     }//GEN-LAST:event_jButton9ActionPerformed
 
@@ -500,6 +613,7 @@ public class puzzleMain extends javax.swing.JFrame {
         ImageIcon focus2=(ImageIcon)jButton9.getIcon();
         ImageIcon focus3=(ImageIcon)jButton11.getIcon();
         ImageIcon focus4=(ImageIcon)jButton14.getIcon();
+        contador++;
         if(focus1==iSKT1){
             jButton10.setIcon(iSKT1);
             jButton6.setIcon(target);
@@ -517,7 +631,7 @@ public class puzzleMain extends javax.swing.JFrame {
         }
         boolean win=this.win();
         if(win==true){
-            JOptionPane.showMessageDialog(null,"Has ganado");
+            JOptionPane.showMessageDialog(null,"Has ganado con" + contador + " movimientos");
         }
     }//GEN-LAST:event_jButton10ActionPerformed
 
@@ -528,6 +642,7 @@ public class puzzleMain extends javax.swing.JFrame {
         ImageIcon focus2=(ImageIcon)jButton10.getIcon();
         ImageIcon focus3=(ImageIcon)jButton12.getIcon();
         ImageIcon focus4=(ImageIcon)jButton15.getIcon();
+        contador++;
         if(focus1==iSKT1){
             jButton11.setIcon(iSKT1);
             jButton7.setIcon(target);
@@ -545,7 +660,7 @@ public class puzzleMain extends javax.swing.JFrame {
         }
         boolean win=this.win();
         if(win==true){
-            JOptionPane.showMessageDialog(null,"Has ganado");
+            JOptionPane.showMessageDialog(null,"Has ganado con" + contador + " movimientos");
         }
     }//GEN-LAST:event_jButton11ActionPerformed
 
@@ -555,6 +670,7 @@ public class puzzleMain extends javax.swing.JFrame {
         ImageIcon focus1=(ImageIcon)jButton8.getIcon();
         ImageIcon focus2=(ImageIcon)jButton11.getIcon();
         ImageIcon focus3=(ImageIcon)jButton16.getIcon();
+        contador++;
         if(focus1==iSKT1){
             jButton12.setIcon(iSKT1);
             jButton8.setIcon(target);
@@ -569,7 +685,7 @@ public class puzzleMain extends javax.swing.JFrame {
         }
         boolean win=this.win();
         if(win==true){
-            JOptionPane.showMessageDialog(null,"Has ganado");
+            JOptionPane.showMessageDialog(null,"Has ganado con" + contador + " movimientos");
         }
     }//GEN-LAST:event_jButton12ActionPerformed
 
@@ -578,6 +694,7 @@ public class puzzleMain extends javax.swing.JFrame {
         ImageIcon target=(ImageIcon)jButton13.getIcon();
         ImageIcon focus1=(ImageIcon)jButton9.getIcon();
         ImageIcon focus2=(ImageIcon)jButton14.getIcon();
+        contador++;
         if(focus1==iSKT1){
             jButton13.setIcon(iSKT1);
             jButton9.setIcon(target);
@@ -588,7 +705,7 @@ public class puzzleMain extends javax.swing.JFrame {
         }
         boolean win=this.win();
         if(win==true){
-            JOptionPane.showMessageDialog(null,"Has ganado");
+            JOptionPane.showMessageDialog(null,"Has ganado con" + contador + " movimientos");
         }
     }//GEN-LAST:event_jButton13ActionPerformed
 
@@ -598,6 +715,7 @@ public class puzzleMain extends javax.swing.JFrame {
         ImageIcon focus1=(ImageIcon)jButton10.getIcon();
         ImageIcon focus2=(ImageIcon)jButton13.getIcon();
         ImageIcon focus3=(ImageIcon)jButton15.getIcon();
+        contador++;
         if(focus1==iSKT1){
             jButton14.setIcon(iSKT1);
             jButton10.setIcon(target);
@@ -612,7 +730,7 @@ public class puzzleMain extends javax.swing.JFrame {
         }
         boolean win=this.win();
         if(win==true){
-            JOptionPane.showMessageDialog(null,"Has ganado");
+            JOptionPane.showMessageDialog(null,"Has ganado con" + contador + " movimientos");
         }
     }//GEN-LAST:event_jButton14ActionPerformed
 
@@ -622,6 +740,7 @@ public class puzzleMain extends javax.swing.JFrame {
         ImageIcon focus1=(ImageIcon)jButton11.getIcon();
         ImageIcon focus2=(ImageIcon)jButton14.getIcon();
         ImageIcon focus3=(ImageIcon)jButton16.getIcon();
+        contador++;
         if(focus1==iSKT1){
             jButton15.setIcon(iSKT1);
             jButton11.setIcon(target);
@@ -636,7 +755,7 @@ public class puzzleMain extends javax.swing.JFrame {
         }
         boolean win=this.win();
         if(win==true){
-            JOptionPane.showMessageDialog(null,"Has ganado");
+            JOptionPane.showMessageDialog(null,"Has ganado con" + contador + " movimientos");
         }
     }//GEN-LAST:event_jButton15ActionPerformed
 
@@ -645,6 +764,7 @@ public class puzzleMain extends javax.swing.JFrame {
         ImageIcon target=(ImageIcon)jButton16.getIcon();
         ImageIcon focus1=(ImageIcon)jButton12.getIcon();
         ImageIcon focus2=(ImageIcon)jButton15.getIcon();
+        contador++;
         if(focus1==iSKT1){
             jButton16.setIcon(iSKT1);
             jButton12.setIcon(target);
@@ -655,7 +775,7 @@ public class puzzleMain extends javax.swing.JFrame {
         }
         boolean win=this.win();
         if(win==true){
-            JOptionPane.showMessageDialog(null,"Has ganado");
+            JOptionPane.showMessageDialog(null,"Has ganado con" + contador + " movimientos");
         }
     }//GEN-LAST:event_jButton16ActionPerformed
     private ImageIcon [] rellenarActual(){
@@ -708,6 +828,7 @@ public class puzzleMain extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new puzzleMain().setVisible(true);
+                
             }
         });
     }
@@ -721,6 +842,8 @@ public class puzzleMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -736,4 +859,9 @@ public class puzzleMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

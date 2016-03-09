@@ -227,7 +227,7 @@ public class MenuPuzzles extends javax.swing.JFrame {
             for(int i=0;i<500;i=i+125){
                 
                 for(int j=0;j<500;j=j+125){
-                    ImageIcon h=recortaImagen(jLabel2.getIcon(), i, j);
+                    ImageIcon h=recortaImagen(jLabel2.getIcon(), j, i);
                     if(posVector<16){
                         campeonSeleccionado[posVector]=h;
                     }          
