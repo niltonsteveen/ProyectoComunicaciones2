@@ -17,6 +17,11 @@ import javax.swing.JPanel;
  *
  * @author nilton
  */
+import com.google.appengine.api.images.Image;
+import com.google.appengine.api.images.ImagesService;
+import com.google.appengine.api.images.Transform;
+import com.google.appengine.api.images.ImagesServiceFactory;
+
 public class MenuPuzzles extends javax.swing.JFrame {
     ImageIcon imagen[]=new  ImageIcon[7];//para los campeones
     ImageIcon[] campeonSeleccionado=new ImageIcon[16];
