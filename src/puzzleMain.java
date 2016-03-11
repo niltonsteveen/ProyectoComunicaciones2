@@ -36,8 +36,7 @@ public class puzzleMain extends javax.swing.JFrame{
             setLocationRelativeTo(null);
             setResizable(false);
             jMenuItem3.setEnabled(false);
-            cliente=new Cliente(this);
-            
+            cliente=new Cliente(this);         
             Thread hilo = new Thread(cliente);
             hilo.start();
         }catch (Exception ex) {
@@ -200,13 +199,7 @@ public class puzzleMain extends javax.swing.JFrame{
 
         jLabel1.setText("Mis Jugadas:");
 
-        jLabel2.setText("jLabel2");
-
         jLabel3.setText("Jugadas contrincante:");
-
-        jLabel4.setText("jLabel4");
-
-        jLabel5.setText("jLabel5");
 
         jMenu1.setText("Opciones");
 
@@ -284,7 +277,7 @@ public class puzzleMain extends javax.swing.JFrame{
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel4))
                             .addComponent(jLabel5))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(566, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,6 +408,7 @@ public class puzzleMain extends javax.swing.JFrame{
            jButton1.setIcon(iSKT1);
            jButton5.setIcon(target); 
         } 
+        jLabel2.setText(String.valueOf(contador));
         boolean win=this.win();
         enviarWin(win,contador);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -439,6 +433,7 @@ public class puzzleMain extends javax.swing.JFrame{
            jButton2.setIcon(iSKT1);
            jButton6.setIcon(target); 
         }
+        jLabel2.setText(String.valueOf(contador));
         boolean win=this.win();
         enviarWin(win,contador);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -462,6 +457,7 @@ public class puzzleMain extends javax.swing.JFrame{
            jButton3.setIcon(iSKT1);
            jButton7.setIcon(target); 
         }
+        jLabel2.setText(String.valueOf(contador));
         boolean win=this.win();
         enviarWin(win,contador);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -480,6 +476,7 @@ public class puzzleMain extends javax.swing.JFrame{
            jButton4.setIcon(iSKT1);
            jButton8.setIcon(target); 
         }
+        jLabel2.setText(String.valueOf(contador));
         boolean win=this.win();
         enviarWin(win,contador);
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -503,6 +500,7 @@ public class puzzleMain extends javax.swing.JFrame{
            jButton5.setIcon(iSKT1);
            jButton9.setIcon(target); 
         }   
+        jLabel2.setText(String.valueOf(contador));
         boolean win=this.win();
         enviarWin(win,contador);
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -530,7 +528,8 @@ public class puzzleMain extends javax.swing.JFrame{
            jButton6.setIcon(iSKT1);
            jButton10.setIcon(target); 
         }
-       boolean win=this.win();
+        jLabel2.setText(String.valueOf(contador));
+        boolean win=this.win();
         enviarWin(win,contador);
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -557,6 +556,7 @@ public class puzzleMain extends javax.swing.JFrame{
            jButton7.setIcon(iSKT1);
            jButton11.setIcon(target); 
         }
+        jLabel2.setText(String.valueOf(contador));
         boolean win=this.win();
         enviarWin(win,contador);
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -580,6 +580,7 @@ public class puzzleMain extends javax.swing.JFrame{
            jButton8.setIcon(iSKT1);
            jButton12.setIcon(target); 
         }
+        jLabel2.setText(String.valueOf(contador));
         boolean win=this.win();
         enviarWin(win,contador);
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -603,6 +604,7 @@ public class puzzleMain extends javax.swing.JFrame{
            jButton9.setIcon(iSKT1);
            jButton13.setIcon(target); 
         }
+        jLabel2.setText(String.valueOf(contador));
         boolean win=this.win();
         enviarWin(win,contador);
     }//GEN-LAST:event_jButton9ActionPerformed
@@ -630,6 +632,7 @@ public class puzzleMain extends javax.swing.JFrame{
            jButton10.setIcon(iSKT1);
            jButton14.setIcon(target); 
         }
+        jLabel2.setText(String.valueOf(contador));
         boolean win=this.win();
         enviarWin(win,contador);
     }//GEN-LAST:event_jButton10ActionPerformed
@@ -657,6 +660,7 @@ public class puzzleMain extends javax.swing.JFrame{
            jButton11.setIcon(iSKT1);
            jButton15.setIcon(target); 
         }
+        jLabel2.setText(String.valueOf(contador));
         boolean win=this.win();
         enviarWin(win,contador);
     }//GEN-LAST:event_jButton11ActionPerformed
@@ -680,6 +684,7 @@ public class puzzleMain extends javax.swing.JFrame{
            jButton12.setIcon(iSKT1);
            jButton16.setIcon(target); 
         }
+        jLabel2.setText(String.valueOf(contador));
         boolean win=this.win();
         enviarWin(win,contador);
     }//GEN-LAST:event_jButton12ActionPerformed
@@ -698,6 +703,7 @@ public class puzzleMain extends javax.swing.JFrame{
            jButton13.setIcon(iSKT1);
            jButton14.setIcon(target); 
         }
+        jLabel2.setText(String.valueOf(contador));
         boolean win=this.win();
         enviarWin(win,contador);
     }//GEN-LAST:event_jButton13ActionPerformed
@@ -721,6 +727,7 @@ public class puzzleMain extends javax.swing.JFrame{
            jButton14.setIcon(iSKT1);
            jButton15.setIcon(target); 
         }
+        jLabel2.setText(String.valueOf(contador));
         boolean win=this.win();
         enviarWin(win,contador);
     }//GEN-LAST:event_jButton14ActionPerformed
@@ -744,6 +751,7 @@ public class puzzleMain extends javax.swing.JFrame{
            jButton15.setIcon(iSKT1);
            jButton16.setIcon(target); 
         }
+        jLabel2.setText(String.valueOf(contador));
         boolean win=this.win();
         enviarWin(win,contador);
     }//GEN-LAST:event_jButton15ActionPerformed
@@ -762,6 +770,7 @@ public class puzzleMain extends javax.swing.JFrame{
            jButton16.setIcon(iSKT1);
            jButton15.setIcon(target); 
         }
+        jLabel2.setText(String.valueOf(contador));
         boolean win=this.win();
         enviarWin(win,contador);
     }//GEN-LAST:event_jButton16ActionPerformed
@@ -855,7 +864,9 @@ public class puzzleMain extends javax.swing.JFrame{
         posJugador=Integer.parseInt(nombre);
         jLabel5.setText("Jugador:"+nombre);
     }
-    
+    public void setJugadasContrincante(int numero){
+        jLabel4.setText(numero+"");
+    }
     public void enviarWin(boolean win, int cont){
         cliente.enviarWin(win,cont,this.posJugador);
     }

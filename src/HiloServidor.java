@@ -56,7 +56,7 @@ public class HiloServidor implements Runnable{
                 String mwol="";
                 mwol+=posJugador+";";
                 mwol+=movimientos+";";
-                
+                mwol+=otherUser+";";
                 
                 if(recibido[1].equals("true")){
                     

@@ -52,8 +52,10 @@ public class Cliente implements Runnable{
             */
                 String mensajes[]=mensaje.split(";");
                 int mov=Integer.parseInt(mensajes[1]);
-                String estado=mensajes[2];
-                
+                String estado=mensajes[3];
+                if(!player.equals(mensajes[2])){
+                    pM.setJugadasContrincante(mov);
+                }
                 if(player.equals(estado)){
                     JOptionPane.showMessageDialog(pM, "GANASTEEEEEE!");
                 }
