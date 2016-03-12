@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class puzzleMain extends javax.swing.JFrame{
     MenuPuzzles mP;
+    seleccionCampeon sC;
     ImageIcon iSKT1;
     ImageIcon [] original;
     ImageIcon []actual=new ImageIcon[16];
@@ -322,8 +323,12 @@ public class puzzleMain extends javax.swing.JFrame{
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        mP = new MenuPuzzles();
-        mP.setVisible(true);
+        sC=new seleccionCampeon();
+        sC.setVisible(true);
+        
+        
+        /*mP = new MenuPuzzles();
+        mP.setVisible(true);*/
         jMenuItem3.setEnabled(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
     private boolean win(){
@@ -343,7 +348,7 @@ public class puzzleMain extends javax.swing.JFrame{
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
         contador=0;
-        original=mP.campeonSeleccionado();
+        original=sC.campeonSeleccionado();
         iSKT1=original[15]; 
         int numeroRandom;
         Vector guardaPos=new Vector();

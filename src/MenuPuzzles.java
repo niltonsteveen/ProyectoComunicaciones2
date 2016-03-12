@@ -34,7 +34,7 @@ public class MenuPuzzles extends javax.swing.JFrame {
         }
         jLabel2.setIcon(imagen[0]);
         iActual=0;
-        System.out.println("hola mundo");
+        
     }
     
     
@@ -274,7 +274,7 @@ public class MenuPuzzles extends javax.swing.JFrame {
             }
         });
     }
-
+String a="jTextField1.getText()";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

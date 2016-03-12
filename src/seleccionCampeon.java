@@ -1,3 +1,17 @@
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,10 +27,19 @@ public class seleccionCampeon extends javax.swing.JFrame {
     /**
      * Creates new form seleccionCampeon
      */
+    public int iActual;
+    private ImageIcon[] campeonSeleccionado=new ImageIcon[16];;
+    ImageIcon imagen[]=new  ImageIcon[129];
     public seleccionCampeon() {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+        for(int i=1;i<130;i++){
+            imagen[i-1]=new ImageIcon(getClass().getResource("images/Champions/champion ("+i+").jpg"));
+        }
+        Icon icono = new ImageIcon(imagen[0].getImage().getScaledInstance(jLabel5.getWidth(),jLabel5.getHeight(),Image.SCALE_DEFAULT));
+        jLabel5.setIcon(icono);
+        iActual=0;
     }
 
     /**
@@ -28,8 +51,7 @@ public class seleccionCampeon extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -40,15 +62,39 @@ public class seleccionCampeon extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 153));
-        jLabel1.setText("URL de la Imagen:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 280, -1));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/layout/previous1.png"))); // NOI18N
+        jButton3.setBorder(null);
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/layout/previous.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton3KeyPressed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
-        jButton1.setText("Vista previa");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, -1, -1));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/layout/next1.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/layout/next.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 330, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/layout/headermain.jpg"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, -1));
@@ -62,9 +108,14 @@ public class seleccionCampeon extends javax.swing.JFrame {
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/layout/ejecutar-gris.png"))); // NOI18N
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 610, -1, -1));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 610, -1, -1));
 
-        jLabel5.setText("jLabel5");
+        jLabel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 255), 4, true));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 500, 500));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/layout/grieta.jpg"))); // NOI18N
@@ -73,6 +124,82 @@ public class seleccionCampeon extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int posVector=0;
+            for(int i=0;i<500;i=i+125){
+                
+                for(int j=0;j<500;j=j+125){
+                    ImageIcon h=recortaImagen(jLabel5.getIcon(), j, i);
+                    if(posVector<16){
+                        campeonSeleccionado[posVector]=h;
+                    }          
+                    posVector++;
+                }
+            }   
+            
+            campeonSeleccionado[15]=new ImageIcon(getClass().getResource("imagenes/layout/skt1.jpg"));
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                // TODO add your handling code here:
+                
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        // TODO add your handling code here:
+        int key=evt.getKeyCode();
+        if(iActual>=0&&iActual<129){
+            iActual++;
+            if(key==KeyEvent.VK_RIGHT&&iActual<129){
+                Icon icono = new ImageIcon(imagen[iActual].getImage().getScaledInstance(jLabel5.getWidth(),jLabel5.getHeight(),Image.SCALE_DEFAULT));
+                jLabel5.setIcon(icono);
+            }
+        }
+        System.out.println(iActual);
+    }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
+        // TODO add your handling code here:
+        int key=evt.getKeyCode();
+        if(iActual==128){
+            iActual--;
+        }
+        if(iActual>=0&&iActual<129){
+            iActual--;
+            if(key==KeyEvent.VK_LEFT&&iActual<129&&iActual>=0){
+                Icon icono = new ImageIcon(imagen[iActual].getImage().getScaledInstance(jLabel5.getWidth(),jLabel5.getHeight(),Image.SCALE_DEFAULT));
+                jLabel5.setIcon(icono);
+            }
+        }
+        if(iActual==-1){
+            iActual=0;
+        }
+    }//GEN-LAST:event_jButton3KeyPressed
+    public ImageIcon[] campeonSeleccionado(){
+        return campeonSeleccionado;
+    }
+    
+    private ImageIcon recortaImagen(Icon icon,int x, int y){
+        BufferedImage bi = new BufferedImage(
+        icon.getIconWidth(),
+        icon.getIconHeight(),
+        BufferedImage.TYPE_INT_RGB);
+        Graphics g = bi.createGraphics();
+        // paint the Icon to the BufferedImage.
+        icon.paintIcon(null, g, 0,0);
+        g.dispose();
+        int ancho=125;
+        int alto=125;
+        BufferedImage bi1=bi.getSubimage(x, y, ancho, alto);
+        ImageIcon z=new ImageIcon(bi1);
+        return z;
+    }
     /**
      * @param args the command line arguments
      */
@@ -111,11 +238,10 @@ public class seleccionCampeon extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

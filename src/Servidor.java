@@ -40,11 +40,13 @@ public class Servidor {
                 Runnable  run = new HiloServidor(cliente,usuarios,pos,movJugadores);
                 Thread hilo = new Thread(run);
                 hilo.start();
+                System.out.println("hola");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    
     public static void main(String args[]) {
         Servidor servidor= new Servidor();
         servidor.listen();
